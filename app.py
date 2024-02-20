@@ -57,5 +57,4 @@ if st.button('Afficher GPX'):
     gpx_content = display_gpx(date, time, hr, minutes)
     st.text_area('Contenu GPX :', gpx_content, height=300)
     
-    with st.expander("Télécharger GPX"):
-        st.download_button(label='Télécharger', data=gpx_content, file_name='five.gpx', mime='text/xml')
+    st.download_button(label='Télécharger', data=gpx_content, file_name='five.gpx', mime='text/xml')

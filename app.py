@@ -44,9 +44,7 @@ def display_gpx(date, time, hr, minutes):
         
     gpx_content += "</trkseg></trk></gpx>"
     
-    download_link = f'data:text/xml;charset=utf-8,{urllib.parse.quote(gpx_content)}'
-    
-    return gpx_content, download_link
+    return gpx_content
 
 st.title('Generate GPX')
 
@@ -56,6 +54,8 @@ hr = st.number_input('Entrez la valeur de HR :', value=140)
 minutes = st.number_input("Entrez la durée en minutes :", min_value=0, value=60)
 
 if st.button('Afficher GPX'):
-    gpx_content, download_link = display_gpx(date, time, hr, minutes)
+    gpx_content = display_gpx(date, time, hr, minutes)
     st.text_area('Contenu GPX :', gpx_content, height=300)
-    st.markdown(f'[Télécharger GPX]({download_link})', unsafe_allow_html=True)
+    
+    with st.expander("Télécharger GPX"):
+        st.download_button(label='Télécharger', data=gpx_content, file_name='five.gpx', mime='text/xml')

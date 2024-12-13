@@ -13,7 +13,7 @@ def display_gpx(date, time, hr, minutes):
     <trkseg>"""
         
     if minutes:
-        start_datetime = datetime.datetime.strptime(f"{date}T{time}", "%Y-%m-%dT%H:%M:%S") - datetime.timedelta(hours=1)
+        start_datetime = datetime.datetime.strptime(f"{date}T{time}", "%Y-%m-%dT%H:%M") - datetime.timedelta(hours=1)
         end_datetime = start_datetime + datetime.timedelta(minutes=int(minutes))
         current_datetime = start_datetime
         while current_datetime < end_datetime:
@@ -49,9 +49,9 @@ def display_gpx(date, time, hr, minutes):
 st.title('Generate GPX')
 
 date = st.date_input('Choisir une date :', datetime.date.today())
-time = st.text_input('Choisir une heure :', '17:00:00')
+time = st.text_input('Choisir une heure :', '19:30')
 hr = st.number_input('Entrez la valeur de HR :', value=140)
-minutes = st.number_input("Entrez la durée en minutes :", min_value=0, value=60)
+minutes = st.number_input("Entrez la durée en minutes :", min_value=0, value=75)
 
 if st.button('Afficher GPX'):
     gpx_content = display_gpx(date, time, hr, minutes)

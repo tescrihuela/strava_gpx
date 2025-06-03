@@ -217,18 +217,18 @@ st.title('Traitement des fichiers GPX')
 tab1, tab2 = st.tabs(['Créer GPX', 'Ajouter HR à un GPX'])
 
 alpha = 0.8
+today = datetime.date.today()
+monday = today - datetime.timedelta(days=today.weekday())  # 0 = lundi
 
 with tab1:
-    today = datetime.date.today()
-    monday = today - datetime.timedelta(days=today.weekday())  # 0 = lundi
     date = st.date_input('Choisir une date :', monday)    
     time = st.text_input('Choisir une heure (hh:mm) :', '19:30')
     base_hr = st.number_input('Entrez la valeur de HR :', value=140)
-    minutes = st.number_input("Entrez la durée en minutes :", min_value=0, value=75)
+    minutes = st.number_input("Entrez la durée en minutes :", min_value=0, value=90)
 
     if st.button('Afficher GPX'):
         gpx_content = display_gpx(date, time, base_hr, minutes, alpha)
-        st.text_area('Contenu GPX :', gpx_content, height=300)
+        st.text_area('Contenu GPX :', gpx_content, height=200)
         st.download_button(label='Télécharger', data=gpx_content, file_name='generated.gpx', mime='text/xml')
 
 with tab2:
@@ -238,5 +238,5 @@ with tab2:
     if uploaded_file is not None:
         updated_gpx_content = add_hr_to_gpx(uploaded_file, base_hr, alpha)
         if updated_gpx_content:
-            st.text_area('Contenu modifié du fichier GPX :', updated_gpx_content, height=300)
+            st.text_area('Contenu modifié du fichier GPX :', updated_gpx_content, height=200)
             st.download_button(label='Télécharger le fichier modifié', data=updated_gpx_content, file_name='updated.gpx', mime='text/xml')

@@ -221,7 +221,8 @@ alpha = 0.8
 with tab1:
     today = datetime.date.today()
     monday = today - datetime.timedelta(days=today.weekday())  # 0 = lundi
-    date = st.date_input('Choisir une date :', monday)    time = st.text_input('Choisir une heure (hh:mm) :', '19:30')
+    date = st.date_input('Choisir une date :', monday)    
+    time = st.text_input('Choisir une heure (hh:mm) :', '19:30')
     base_hr = st.number_input('Entrez la valeur de HR :', value=140)
     minutes = st.number_input("Entrez la durée en minutes :", min_value=0, value=75)
 

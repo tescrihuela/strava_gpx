@@ -69,7 +69,7 @@ def display_gpx(date, time, base_hr, minutes, alpha=0.2):
     start_datetime = start_datetime.replace(tzinfo=ZoneInfo("Europe/Paris"))
     previous_hr = base_hr
 
-    for i in range(minutes):
+    for i in range(minutes+1):
         current_datetime = start_datetime + datetime.timedelta(minutes=i)
         current_datetime_utc = current_datetime.astimezone(timezone.utc)
 

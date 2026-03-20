@@ -78,7 +78,7 @@ def display_gpx(date, time, base_hr, minutes, alpha=0.2):
         previous_hr = smoothed_hr
 
         gpx_content += f"""
-      <trkpt lat="49.427809" lon="1.1038437">
+      <trkpt lat="49.66669296093912" lon="0.8879927112920255">
         <time>{current_datetime_utc.strftime("%Y-%m-%dT%H:%M:%SZ")}</time>
         <extensions>
           <gpxtpx:TrackPointExtension>
